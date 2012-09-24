@@ -1,0 +1,15 @@
+<div class="title">
+<span class="clicktoedit">Click to edit</span>
+{{ site }}
+
+</div>
+<div class="edit">
+<input type="text" name="site" value="{{ site }}" placeholder="Site Name"/><br />
+<textarea name="opts">
+{{ json_opts }}
+</textarea><br />
+  <div class="buttons">
+    <button class="savesite">Save Site</button> <button href="#" class="removesite">Remove Site</button>
+  </div>
+</div>
+

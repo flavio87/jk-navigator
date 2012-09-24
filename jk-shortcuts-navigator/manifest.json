@@ -3,13 +3,18 @@
   "version": "1.1",
   "manifest_version": 2,
   "description": "Use keyboard shortcuts to navigate with the most popular websites.",
+  "permissions": [
+    "contextMenus",
+    "http://localhost:5002/*"
+  ],
+  "options_page":"options.html", 
   "content_scripts": [
     {
       "matches": [
         "http://*/*",
         "https://*/*"
       ],
-      "js": ["jquery-1.7.2.min.js", "keymaster.min.js", "script.js"],
+      "js": ["jquery-1.8.2.min.js", "keymaster.min.js", "underscore-min.js", "script.js"],
       "run_at": "document_start"
     }
   ],

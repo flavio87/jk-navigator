@@ -1,0 +1,174 @@
+<html>
+  <head> 
+    <script src="lib/json2.js"></script>
+    <script src="lib/jquery-1.8.2.min.js" ></script>
+    <script src="lib/underscore-min.js" ></script>
+    <script src="lib/backbone-min.js" ></script>
+    <script src="lib/backbone.localStorage-min.js"></script>
+    <script src="lib/handlebars-1.0.rc.1.js"></script>
+    <script src="siteitem.js"></script>
+    <script src="sites.js"></script>
+    <script src="options.js"></script>
+
+    <style>
+/* RESET */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* CSS */
+body { 
+  padding:20px 30px; 
+  font-family:'Lucida Grande', sans-serif; 
+  font-size:13px;
+  color:#051018;
+}
+h1, h2 {
+  color:#324350;
+}
+h1 { 
+  font-size:18px;
+}
+h2 {
+  font-size:15px; 
+  line-height:2em;
+  margin-top:1em;
+}
+p {
+  margin-bottom:0.5em;
+}
+.logo { 
+  display:inline-block;
+  vertical-align:middle;
+  margin-right:20px;
+}
+.customsites {
+  width:400px;
+}
+.customsites li {
+  background-color:#efefef;
+  border:1px solid #ccc;
+  padding:4px;
+  margin:4px 0;
+  cursor:pointer;
+}
+.customsites li:hover {
+  background-color:#f6f6f6;
+}
+
+
+.customsites li .title span.clicktoedit {
+  display:block;
+  float:right;
+  color:#aaa;
+  font-size:10px;
+  line-height:15px;
+}
+.customsites li:hover .title span.clicktoedit {
+  color:#555;
+}
+/* Editable form */
+
+.customsites li .edit { 
+  display:none;
+}
+.customsites li.addnew .edit, .customsites li.editable .edit {
+  display:block;
+}
+.customsites li.addnew, .customsites li.editable {
+  cursor:auto;
+  background-color:#f6f6f6 !important;
+}
+.customsites li.addnew .edit {
+  display:block;
+}
+.customsites li.editable .title {
+  display:none;
+}
+.customsites li .edit textarea {
+  font-family:monospace;
+  width:300px;
+  height:250px;
+}
+.customsites li .edit .buttons {
+  margin-top:5px;
+}
+.sitehelp h3 { margin-top:20px; margin-bottom:10px; }
+.sitehelp ul { list-style-type:none; }
+.sitehelp li { margin-bottom:5px; color:#444;}
+.sitehelp li strong { font-family:monospace; font-weight:bold; color:#222;}
+  </style>
+  </head>
+  <body>
+    <div style="display:none;" class="templates">
+      <li class="sitetemplate"><span>Title</span></li>
+    </div>
+
+    <h1><img src="icon48.png" class="logo" />JK Navigator Options</h1>
+    <h2>Custom sites</h2>
+    <p>Manage your custom sites for which you'd like to enable the JK Navigator here:</p>
+
+    <p>    <a href="#" class="addsite">Add site</a></p>
+
+    <ul class="customsites">
+    </ul>
+
+      <div class="sitehelp">
+<h3>Explanation</h3>
+<ul>
+<li><strong>selectors:</strong> css selector for the list of links that should be iterated through.</li>
+<li><strong>paginator_selector_next:</strong> css selector for the link that goes to the next page of search results</li>
+<li><strong>paginator_selector_previous:</strong> css selector for the link that goes to the previous page of search results</li> 
+<li><strong>allowSubdomains:</strong> wether or not docs.google.com should trigger the jk navigator with this selector (www is not treated as subdomain here and will always work)</li>
+<li><strong>search_selector:</strong> css selector for the search field</li>
+<li><strong>liveUpdateElement:</strong> for pages with ajax, we sometimes need to define a listener on the parent css element of the link list to know when they are all ready.</li>
+<li><strong>infiniteScroll:</strong> set to True if we have a page like facebook or quora that can dynamically load new links into the link list.</li>
+</ul>
+</div>
+
+    <h2>About</h2>
+    The JK Navigator is built by: thomasst, flaviorump & lucasvo
+
+  </body>
+</html>
+
