@@ -68,11 +68,11 @@
         },
         'youtube': {
             selectors: ['li div div h3 a:nth(*)'],
-            search_selector: '#masthead-search-term',
+            search_selector: '#masthead-search-term'
         },
         'stackoverflow': {
             selectors: ['div h3 a.question-hyperlink:nth(*)'],
-            search_selector: 'form#search div input.textbox',
+            search_selector: 'form#search div input.textbox'
         },
         'techcrunch': {
             selectors: ['h2.headline a:nth(*)'],
@@ -167,7 +167,7 @@
         var result_links_container = $(group_selector_all);
         if (result_links_container.length) {
             //store the links into the local storage
-            result_links = []
+            result_links = [];
             result_links_container.each(function(m, link) {
                 if (site == 'google') {
                     // HACK: Google rewrites links into tracking links when clicking them. Compare the text instead.
@@ -332,6 +332,17 @@
 
             key('⌘+return', wrap(function(ev) {
                 open_link(ev, true);
+            }));
+
+            function scroll_to_here(element) {
+                $('html, body').animate({
+                    scrollTop: element.offset().top - 20
+                }, 200);
+            }
+
+            key('p', wrap(function(ev) {
+                var link = $(active_selector(localStorage.idx));
+                scroll_to_here(link);
             }));
 
             key('o', wrap(function(ev) {
