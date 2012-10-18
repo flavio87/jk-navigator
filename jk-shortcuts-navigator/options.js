@@ -68,9 +68,11 @@
       if (!this.validate()) {
         return;
       }
+      this.regex = this.$('input[name=regex]').val();
       values = {
         'site': this.site,
         'opts': this.opts,
+        'regex': this.regex,
         'modified': true
       };
       if (!this.model) {

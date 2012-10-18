@@ -67,9 +67,12 @@ class SiteView extends Backbone.View
     if not @validate()
       return
 
+    @regex = @$('input[name=regex]').val()
+
     values = {
       'site':@site
       'opts':@opts
+      'regex':@regex
       'modified':true
     }
 
