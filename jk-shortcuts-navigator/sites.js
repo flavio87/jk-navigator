@@ -117,6 +117,12 @@
         paginator_selector_prev: '.page-prev>a'
       },
       regex: 'https?://(www\.)?techcrunch\.com\/.*'
+    },
+    'lobsters': {
+      opts: {
+        selectors: ['li span.link a:nth(*)']
+      },
+      regex: 'https?://lobste\.rs\/.*'
     }
   };
 
