@@ -31,6 +31,7 @@ chrome.extension.sendMessage({action: 'getOpts', url: document.location.href}, f
             }
             $(previousSelection).css('background-color', 'inherit');
         }
+        $('html, body').scrollTop($(link).offset().top - 100);
         link.css('background-color', '#fcc');
         if (focus) { link.focus(); }
         previousSelection = link.get()[0];
