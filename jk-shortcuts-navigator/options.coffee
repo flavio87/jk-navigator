@@ -22,12 +22,12 @@ defaultJSON = '''
 
 class SiteView extends Backbone.View
   tagName:'li'
-  
+
   events: {
     'click .title': 'editSite'
     'click .savesite': 'saveSite'
     'click .removesite': 'removeSite'
-    'click .discard': 'discardChanges' 
+    'click .discard': 'discardChanges'
   }
 
   initialize: (options) ->
@@ -35,7 +35,7 @@ class SiteView extends Backbone.View
     if @model
       @model.bind('change', @render, @)
       @model.bind('destroy', @remove, @)
-   
+
   render: () ->
     if @addnew
       opts = defaultJSON
@@ -46,7 +46,7 @@ class SiteView extends Backbone.View
       addnew:@addnew
       json_opts:opts
     }
-    
+
     if @model
       _.extend(context, @model.toJSON())
     html = Handlebars.templates.siteitem(context)
@@ -82,9 +82,9 @@ class SiteView extends Backbone.View
       @model.set(values)
       @model.save()
 
-    if @$('input[name=submittojk]').is(':checked') 
+    if @$('input[name=submittojk]').is(':checked')
       @model.submitToJK()
-    
+
     @editMode = false
     @$el.removeClass('editable')
 
@@ -104,12 +104,12 @@ class SiteView extends Backbone.View
     catch error
       alert 'Invalid JSON'
       return false
-      
+
     for k in _.keys(opts)
       if valid_keys.indexOf(k) == -1
         alert 'Unknown Key in Options: '+k
         return false
-    
+
     @opts = opts
     return true
 
@@ -131,7 +131,7 @@ class OptionPane extends Backbone.View
 
   events: {
     'click .addsite': 'addSite',
-    'click .restoresites':'restoreSites', 
+    'click .restoresites':'restoreSites',
   }
 
   initialize: () ->
@@ -149,7 +149,7 @@ class OptionPane extends Backbone.View
 
   addSite: () ->
     view = new SiteView({addnew:true})
-    
+
     @$(".customsites").prepend(view.render().el)
 
   restoreSites: ->
