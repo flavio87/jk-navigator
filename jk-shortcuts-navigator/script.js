@@ -14,9 +14,8 @@ chrome.extension.sendMessage({action: 'getOpts', url: document.location.href}, f
     var oldHTML = null;
     var isEnabled = true;
 
-
-    function active_selector(idx) {
-        return group_selector.replace(':nth(*)', ':nth('+idx+')')
+    function activeElement(idx) {
+        return $(group_selector_all).slice(idx, parseInt(idx)+1);
     }
 
     if (!localStorage.idx)
@@ -24,7 +23,7 @@ chrome.extension.sendMessage({action: 'getOpts', url: document.location.href}, f
 
     var previousSelection = null;
     var select = function(focus) {
-        var link = $(active_selector(localStorage.idx));
+        var link = activeElement(localStorage.idx);
         if (previousSelection) {
             if (link.get()[0] == previousSelection) {
                 return link;
@@ -87,7 +86,7 @@ chrome.extension.sendMessage({action: 'getOpts', url: document.location.href}, f
             }
         }
 
-        var newNode = $(active_selector(localStorage.idx));
+        var newNode = activeElement(localStorage.idx);
         if (!node || (node != newNode)) {
             if (!localStorage.idx) {
                 localStorage.idx = 0;
