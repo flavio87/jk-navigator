@@ -15,7 +15,7 @@ chrome.extension.sendMessage({action: 'getOpts', url: document.location.href}, f
     var isEnabled = true;
 
     function activeElement(idx) {
-        return $(group_selector_all).slice(idx, parseInt(idx)+1);
+        return $(group_selector_all).slice(parseInt(idx), parseInt(idx)+1);
     }
 
     if (!localStorage.idx)

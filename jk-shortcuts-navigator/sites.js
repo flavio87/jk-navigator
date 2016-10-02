@@ -18,7 +18,7 @@
     },
     'news.ycombinator': {
       opts: {
-        selectors: ['td.title > a, td.subtext > a:contains(comments), td.subtext > a:contains(discuss)'],
+        selectors: ['td.title > a, td.subtext > a:contains(comment), td.subtext > a:contains(comments), td.subtext > a:contains(discuss)'],
         paginator_selector_next: 'a.morelink',
         search_selector: 'center form input'
       },
