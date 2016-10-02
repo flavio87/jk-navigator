@@ -1,7 +1,7 @@
 builtInSites = {
   'google': {
     opts: {
-      selectors: ['h3.r>a:nth(*)'],
+      selectors: ['h3.r>a'],
       allowSubdomains: false,
       search_selector: '#gbqfq',
       paginator_selector_next: 'a#pnnext.pn',
@@ -13,14 +13,15 @@ builtInSites = {
 
   'news.ycombinator': {
     opts: {
-      selectors: ['td.title a:nth(*)'],
+      selectors: ['td.title > a, td.subtext > a:contains(comments), td.subtext > a:contains(discuss)'],
+      paginator_selector_next: 'a.morelink',
       search_selector: 'center form input'
     },
     regex: 'https?://news\.ycombinator\.com\/.*'
   },
   'quora': {
     opts: {
-      selectors: ['div.pagedlist_item:not(.pagedlist_hidden) a.question_link:nth(*)'],
+      selectors: ['div.pagedlist_item:not(.pagedlist_hidden) a.question_link'],
       search_selector: '.question_box.light',
       infiniteScroll: true,
       liveUpdateElement: '.main .e_col .w4_5 main_col',
@@ -29,7 +30,7 @@ builtInSites = {
   },
   'reddit': {
     opts: {
-      selectors: ['#siteTable div.entry:nth(*) a.title'],
+      selectors: ['#siteTable div.entry a.title'],
       search_selector: 'form#search input',
       paginator_selector_next: 'p.nextprev a:last-of-type',
       paginator_selector_prev: 'p.nextprev a:first-of-type'
@@ -38,7 +39,7 @@ builtInSites = {
   },
   'amazon': {
     opts: {
-      selectors: ['h3.newaps:nth(*)>a', 'div.data:nth(*) h3.title a.title'],
+      selectors: ['h3.newaps>a', 'div.data h3.title a.title'],
       search_selector: '#twotabsearchtextbox',
       paginator_selector_next: '#pagnNextLink',
       paginator_selector_prev: '#pagnPrevLink'
@@ -47,7 +48,7 @@ builtInSites = {
   },
   'ebay': {
     opts: {
-      selectors: ['div.ittl:nth(*) a', 'div.ttl:nth(*) a', 'div.ititle:nth(*) a.vip'],
+      selectors: ['div.ittl a', 'div.ttl a', 'div.ititle a.vip'],
       search_selector: '#_fsb_nkw',
       paginator_selector_next: 'td.botpg-next a',
       paginator_selector_prev: 'td.botpg-prev a'
@@ -56,7 +57,7 @@ builtInSites = {
   },
   'yelp': {
     opts: {
-      selectors: ['div.businessresult:nth(*) h4.itemheading a'],
+      selectors: ['div.businessresult h4.itemheading a'],
       search_selector: '#find_desc',
       paginator_selector_next: '#pager_page_next',
       paginator_selector_prev: '#pager_page_prev',
@@ -66,7 +67,7 @@ builtInSites = {
   },
   'craigslist': {
     opts: {
-      selectors: ['p.row:nth(*)>a'],
+      selectors: ['p.row>a'],
       search_selector: '#query',
       paginator_selector_next: 'h4>span:last-of-type>a',
       paginator_selector_prev: 'h4>span:first-of-type>a'
@@ -75,7 +76,7 @@ builtInSites = {
   },
   'linkedin': {
     opts: {
-      selectors: ['li.vcard:nth(*)>div>h2>a'],
+      selectors: ['li.vcard>div>h2>a'],
       search_selector: '#keywords-search',
       paginator_selector_next: '.paginator-next',
       paginator_selector_prev: '.paginator-prev'
@@ -84,7 +85,7 @@ builtInSites = {
   },
   'facebook': {
     opts: {
-      selectors: [['#pagelet_home_stream li.uiStreamStory', '#pagelet_home_stream li.uiStreamStory:nth(*) a:nth(1)']],
+      selectors: [['#pagelet_home_stream li.uiStreamStory', '#pagelet_home_stream li.uiStreamStory a:nth(1)']],
       search_selector: 'input#q.inputtext.DOMControl_placeholder',
       liveUpdateElement: '#contentArea',
       infiniteScroll: true
@@ -93,21 +94,21 @@ builtInSites = {
   },
   'youtube': {
     opts: {
-      selectors: ['li div div h3 a:nth(*)'],
+      selectors: ['li div div h3 a'],
       search_selector: '#masthead-search-term',
     }
     regex: 'https?://(www\.)?youtube\.com\/.*'
   },
   'stackoverflow|serverfault|superuser|askubuntu|stackexchange': {
     opts: {
-      selectors: ['div h3 a.question-hyperlink:nth(*)'],
+      selectors: ['div h3 a.question-hyperlink'],
       search_selector: 'form#search div input.textbox',
     },
     regex: 'https?://([a-z]+\.)?(stackoverflow|serverfault|superuser|askubuntu|stackexchange).com\/.*'
   },
   'techcrunch': {
     opts: {
-      selectors: ['h2.headline a:nth(*)'],
+      selectors: ['h2.headline a'],
       paginator_selector_next: '.page-next>a',
       paginator_selector_prev: '.page-prev>a'
     },
@@ -115,7 +116,7 @@ builtInSites = {
   },
   'lobsters': {
     opts: {
-      selectors: ['li span.link a:nth(*)']
+      selectors: ['li span.link a']
     },
     regex: 'https?://lobste\.rs\/.*'
   }
